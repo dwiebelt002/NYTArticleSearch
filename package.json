@@ -1,0 +1,35 @@
+{
+  "name": "nytarticlesearch",
+  "version": "1.0.0",
+  "description": "A mock-up of the New York Times article search application utilizing Node, Express, MongoDB, and React.js.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwiebelt002/NYTArticleSearch.git"
+  },
+  "author": "Devin J. Wiebelt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dwiebelt002/NYTArticleSearch/issues"
+  },
+  "homepage": "https://github.com/dwiebelt002/NYTArticleSearch#readme",
+  "dependencies": {
+    "axios": "^0.13.1",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "body-parser": "^1.15.2",
+    "core-js": "^2.4.1",
+    "express": "^4.14.0",
+    "mongojs": "^2.4.0",
+    "morgan": "^1.7.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "webpack": "^1.13.1"
+  }
+}
