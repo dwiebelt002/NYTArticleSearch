@@ -1,25 +1,27 @@
 // Include the axios package for performing HTTP requests (promise based alternative to request)
 var axios = require('axios');
 
-// Geocoder API
-var geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
-
 // Helper Functions (in this case the only one is runQuery)
 var helpers = {
 
-	// This function serves our purpose of running the query to geolocate. 
-	runQuery: function(location){
+	// This function serves our purpose of running the query to search articles. 
+	runQuery: function(article){
 
-		console.log(location);
+		console.log(article);
 
-		//Figure out the geolocation
-		var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
+		// NYT API
+		var nytUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+		nytUrl += '?' + $.param({
+		  'api-key': "4b452cb40c554165990c842d46a13850",
+		  'q': article
+		});
 
-		return axios.get(queryURL)
+		return axios.get(nytUrl)
 			.then(function(response){
 
 				console.log(response);
-				return response.data.results[0].formatted;
+				// will need to look at the response data in order to write out the return below
+				return response.data;
 		})
 
 	},
@@ -27,7 +29,7 @@ var helpers = {
 	// This function hits our own server to retrieve the record of query results
 	getHistory: function(){
 
-		return axios.get('/api')
+		return axios.get('/api/saved')
 			.then(function(response){
 
 				console.log(response);
@@ -36,9 +38,9 @@ var helpers = {
 	},
 
 	// This function posts new searches to our database.
-	postHistory: function(location){
+	postHistory: function(title){
 
-		return axios.post('/api', {location: location})
+		return axios.post('/api/saved', {title: title})
 			.then(function(results){
 
 				console.log("Posted to MongoDB");
